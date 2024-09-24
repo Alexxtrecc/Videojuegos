@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="body.css">
+    <link rel="stylesheet" href="bb.js">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperación de Contraseña</title>
+    
+</head>
+<body>
+
+<div class="recovery-container">
+    <h2>Recuperar Contraseña</h2>
+    <form id="passwordRecoveryForm" onsubmit="sendRecoveryEmail(event)">
+        <input type="email" id="email" placeholder="Ingresa tu email" required>
+        <input type="submit" value="Enviar Enlace de Recuperación">
+        <p id="message" class="message"></p>
+        <p><a href="sesion.html">Regresar</a></p>
+    </form>
+</div>
+
+</body>
+</html>
