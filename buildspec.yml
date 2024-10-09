@@ -1,0 +1,20 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14  # Cambia según el lenguaje que uses
+    commands:
+      - echo "Instalando dependencias..."
+      - npm install  # Cambia según el lenguaje que uses
+  build:
+    commands:
+      - echo "Construyendo la aplicación..."
+      - npm run build  # Cambia según el lenguaje que uses
+  post_build:
+    commands:
+      - echo "Construyendo la imagen Docker..."
+      - docker build -t my-app .  # Cambia 'my-app' por el nombre que prefieras
+      - echo "Iniciando sesión en ECR..."
+      - aws ecr get-login-password --region your-region | docker login --username AWS --password-stdin your-account-id.dkr.ecr.your-region.amazonaws.com
+      - docker tag my-app:latest your-account-id.dkr.ecr.your-region.amazonaws.com/my-app:latest
+      - docker push your-account-id.dkr.ecr.your-region.amazonaws.com/my-app:latest
